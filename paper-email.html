@@ -1,0 +1,88 @@
+<!doctype html>
+<!--
+Copyright 2015 Sarox
+
+Licensed under the Apache License, Version 2.0 (the "License");
+you may not use this file except in compliance with the License.
+You may obtain a copy of the License at
+
+   http://www.apache.org/licenses/LICENSE-2.0
+
+Unless required by applicable law or agreed to in writing, software
+distributed under the License is distributed on an "AS IS" BASIS,
+WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+See the License for the specific language governing permissions and
+limitations under the License.
+-->
+
+<link rel="import" href="../polymer/polymer.html">
+<link rel="import" href="../paper-tooltip/paper-tooltip.html">
+
+<!--
+`paper-email` is an element for displaying an email address, including a tooltip and mailto link. Set the `email` attribute to an email address and set the element's content to anything that you want to link to the email address.
+
+Example:
+
+    <paper-email email="example@example.com">contact me</paper-email>
+
+You can change the tooltip's position and offset using their respective attributes:
+
+    <paper-email email="example@example.org" tooltip-position="right" tooltip-offset="0">contact me again</paper-email>
+
+
+### Styling
+
+The following custom properties and mixins are available for styling:
+
+Custom property | Description | Default
+----------------|-------------|----------
+`--paper-email-link-color` | Color of the link | `--dark-primary-color`
+`--paper-email-link-hover-color` | Color of the link when hovered | `--accent-color`
+`--paper-email-link` | Mixin applied to the link | `{}`
+`--paper-email-tooltip` | Mixin applied to the tooltip | `{}`
+-->
+<dom-module id="paper-email">
+    <style>
+        :host {
+            display: inline-block;
+        }
+		
+		#link {
+			color: var(--paper-email-link-color, --dark-primary-color);
+			@apply(--paper-email-link);
+		}
+		#link:hover {
+			color: var(--paper-email-link-hover-color, --accent-color);
+		}
+		paper-tooltip {
+			@apply(--paper-email-tooltip);
+		}
+    </style>
+
+    <template>
+		<a id="link" href="{{_emailLink}}"><content></content></a>
+		<paper-tooltip for="link" position="{{tooltipPosition}}" offset="{{tooltipOffset}}" fit-to-visible-bounds="true">{{email}}</paper-tooltip>
+	</template>
+</dom-module>
+
+<script>
+    Polymer({
+        is: "paper-email",
+		
+		properties: {
+			/** The email address that the element should use. The mailto link is generated from this, and it is put in the tooltip. */
+			email: String,
+			_emailLink: {
+				type: String,
+				computed: "_computeEmailLink(email)"
+			},
+			/** Sets the position of the tooltip. Possible positions are top, bottom, left and right. Refer to `paper-tooltip` for more information. */
+			tooltipPosition: String,
+			/** Offset of the tooltip. Refer to `paper-tooltip` for more information. */
+			tooltipOffset: Number
+		},
+		_computeEmailLink: function (email) {
+			return "mailto:" + email;
+		}
+    });
+</script>
