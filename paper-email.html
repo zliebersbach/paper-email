@@ -37,7 +37,7 @@ The following custom properties and mixins are available for styling:
 Custom property | Description | Default
 ----------------|-------------|----------
 `--paper-email-link-color` | Color of the link | `--dark-primary-color`
-`--paper-email-link-hover-color` | Color of the link when hovered | `--accent-color`
+`--paper-email-link-hover-color` | Color of the link when hovered | `--default-primary-color`
 `--paper-email-link` | Mixin applied to the link | `{}`
 `--paper-email-tooltip` | Mixin applied to the tooltip | `{}`
 @demo
@@ -47,13 +47,15 @@ Custom property | Description | Default
         :host {
             display: inline-block;
         }
-		
-		#link {
+
+		#link:link, #link:visited {
 			color: var(--paper-email-link-color, --dark-primary-color);
+			text-decoration: none;
 			@apply(--paper-email-link);
 		}
-		#link:hover {
-			color: var(--paper-email-link-hover-color, --accent-color);
+		#link:hover, #link:active {
+			color: var(--paper-email-link-hover-color, --default-primary-color);
+			text-decoration: underline;
 		}
 		paper-tooltip {
 			@apply(--paper-email-tooltip);
@@ -69,7 +71,7 @@ Custom property | Description | Default
 <script>
     Polymer({
         is: "paper-email",
-		
+
 		properties: {
 			/** The email address that the element should use. The mailto link is generated from this, and it is put in the tooltip. */
 			email: String,
