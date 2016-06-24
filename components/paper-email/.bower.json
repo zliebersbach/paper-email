@@ -1,0 +1,41 @@
+{
+  "name": "paper-email",
+  "authors": [
+    "Kevin Boxhoorn <kevin@sarox.com.au>"
+  ],
+  "description": "An element for displaying an email address, including a tooltip and mailto link.",
+  "keywords": [
+    "web-component",
+    "web-components",
+    "polymer",
+    "paper",
+    "email",
+    "link"
+  ],
+  "main": "paper-email.html",
+  "license": "http://wincinderith.github.io/paper-email/components/paper-email/LICENSE",
+  "homepage": "https://github.com/wincinderith/paper-email/",
+  "ignore": [
+    "/.*",
+    "/demo/"
+  ],
+  "dependencies": {
+    "polymer": "Polymer/polymer#^1.0.0",
+    "paper-tooltip": "PolymerElements/paper-tooltip#^1.0.0",
+    "paper-styles": "PolymerElements/paper-styles#^1.0.0"
+  },
+  "devDependencies": {
+    "iron-component-page": "PolymerElements/iron-component-page#^1.0.0",
+    "web-component-tester": "*"
+  },
+  "_release": "98131914bf",
+  "_resolution": {
+    "type": "branch",
+    "branch": "master",
+    "commit": "98131914bf8db09c949e364de99853e901f8d0cc"
+  },
+  "_source": "git://github.com/wincinderith/paper-email.git",
+  "_target": "master",
+  "_originalSource": "wincinderith/paper-email",
+  "_direct": true
+}
